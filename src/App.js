@@ -13,6 +13,7 @@ import City from './components/City';
 import Me from './components/Me';
 import CountryList from './components/CountryList';
 import Country from './components/Country';
+import UpdateBlog from './components/Blog/UpdateBlog';
 
 
 const checkToken = () => {
@@ -61,7 +62,9 @@ function App({history}) {
                 <Route exact path='/user/:id' children={<ParamIdForComponent component={User}/>}/>
                 <Route exact path='/blog/:id' children={<ParamIdForComponent component={Blog}/>}/>
                 
+                
                 <GuardedRoute exact path='/me' component={Me} meta={{auth: true}}/>
+                <GuardedRoute exact path='/update/blog/:id' children={<ParamIdForComponent component={UpdateBlog} data={{guardAuth, toHome}}/>} meta={{auth: true}}/>
                 <GuardedRoute exact path='/create/blog/:id' children={<ParamIdForComponent component={CreateBlog} data={{guardAuth, toHome}}/>} meta={{auth: true}}/>
               </Switch>
             </div>

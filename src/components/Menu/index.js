@@ -58,7 +58,7 @@ function Menu({guardAuth}){
                                 <Link className="nav-link" to='/me'>Me</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" onClick={logout}>Logout</a>
+                                <p className="nav-link" onClick={logout}>Logout</p>
                             </li>
 
                         </ul>

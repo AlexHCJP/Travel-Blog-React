@@ -26,7 +26,6 @@ class Blog extends React.Component{
     }
     setData(data){
         this.setState({blog: data.blog, comments: data.comments, user: data.user[0]})
-        console.log(data.comments);
     }
     axiosData(){
         Axios(`http://trvel/api/blog/${this.props.id}`)

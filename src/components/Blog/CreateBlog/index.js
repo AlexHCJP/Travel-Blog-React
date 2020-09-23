@@ -1,10 +1,8 @@
 import React from 'react'
-import EditorJsContainer from 'react-editor-js'
-import {EDITOR_JS_TOOLS} from '../../Editor/tools'
 import AxiosTrvel from '../../../utils/AxiosTrvel';
+import Editor from '../Editor';
 
 const CreateBlog = ({id, guardAuth, toHome}) => {
-    const editorInstance = React.useRef(null);
     const [blog, setBlog] = React.useState({
         title: '',
         description: ''
@@ -15,12 +13,12 @@ const CreateBlog = ({id, guardAuth, toHome}) => {
             [ ev.target.name ]: ev.target.value
         })
     }
-    const createBlog = () => {
-        editorInstance.current.save().then((data => {
+    const createBlog = (editor) => {
+        editor.save().then((data => {
             AxiosTrvel('blog', {
                 ...blog,
                 city_id: id,
-                body: JSON.stringify(data.blocks)
+                body: JSON.stringify(data)
             }, 'POST', toHome, guardAuth)
         }))
     }
@@ -40,10 +38,7 @@ const CreateBlog = ({id, guardAuth, toHome}) => {
             </div>
             
             
-            <EditorJsContainer instanceRef={instance => (editorInstance.current = instance)} tools={EDITOR_JS_TOOLS}/>
-            <div className="d-flex">
-                <button className="btn btn-dark ml-auto" onClick={createBlog}>Create</button>
-            </div>
+            <Editor callback={createBlog}/>
             
         </div>
     )

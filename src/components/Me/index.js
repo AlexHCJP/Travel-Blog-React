@@ -22,12 +22,10 @@ class Me extends React.Component{
     }
     setData(data){
         this.setState({blogs: data['blogs'], user: data['user']})
-        console.log(data)
     }
     render(){
         const {user, blogs} = this.state
-        console.log(blogs)
-        if(user, blogs){return (
+        if(user && blogs){return (
             <div className="card">
                 <UserHeader {...user}/>
                 <div className="card-body">

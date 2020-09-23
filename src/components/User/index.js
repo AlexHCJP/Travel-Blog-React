@@ -18,7 +18,6 @@ class User extends React.Component{
         this.comment = React.createRef()
         this.setData = this.setData.bind(this)
         this.axiosData = this.axiosData.bind(this)
-        this.sendComment = this.sendComment.bind(this)
     }
     componentDidMount(){
         this._isMounted = true
@@ -32,12 +31,7 @@ class User extends React.Component{
             .then(result => this._isMounted && this.setData(result.data))
     }
     setData(data){
-        console.log(data)
         this.setState({blogs: data['blogs'], user: data['user']})
-    }
-    sendComment(){
-        console.log(this.comment.current.value)
-        
     }
     render(){
         const {blogs, user} = this.state

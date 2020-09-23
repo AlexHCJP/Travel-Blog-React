@@ -27,7 +27,6 @@ class Home extends React.Component{
     }
     setData(data){
         this.setState({data})
-        console.log(data)
     }
     render(){
         const {data} = this.state;

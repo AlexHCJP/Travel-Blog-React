@@ -1,7 +1,7 @@
 import React from 'react'
-export default function parserBlog(blocks){
+export default function parserBlog(data){
     const elements = []
-    blocks.forEach((block, ind) => {
+    data.blocks.forEach((block, ind) => {
         elements.push(switchBlocks(block, ind))
     })
     return <div>{elements}</div>;
